@@ -5,6 +5,6 @@ let first = 1,
     therd = 3;
 
 //console.log(first);
-console.log(second);
-//console.log(therd);  
+//console.log(second);
+console.log(therd);  
 
