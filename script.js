@@ -87,19 +87,38 @@ do {
 }
 while (i < 2); */
 
-appData.moneyPerDay = (appData.budget / 30).toFixed(); // формула бюджета на день
-alert("Ежедневный бюджет: " + appData.moneyPerDay);
-
-
-if (appData.moneyPerDay < 100) { //вывод уровня достатка в консоль
-    console.log('Низкий уровень дохода!');
-} else if (appData.moneyPerDay > 101 && appData.moneyPerDay < 999) {
-    console.log('Средний уровень дохода!');
-} else if (appData.moneyPerDay > 1000) {
-    console.log('Высокий уровень дохода!');
-} else {
-    console.log('Error))');
+function detectDayBudget() { // формула бюджета на день
+    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    alert("Ежедневный бюджет: " + appData.moneyPerDay);
 };
+detectDayBudget(); // формула бюджета на день
+
+function detectLevel() { //вывод уровня достатка в консоль
+    if (appData.moneyPerDay < 100) {
+        console.log('Низкий уровень дохода!');
+    } else if (appData.moneyPerDay > 101 && appData.moneyPerDay < 999) {
+        console.log('Средний уровень дохода!');
+    } else if (appData.moneyPerDay > 1000) {
+        console.log('Высокий уровень дохода!');
+    } else {
+        console.log('Error))');
+    };
+}
+detectLevel(); //вывод уровня достатка в консоль
+
+function chooseOptExpenses() { // функция вывода необязательных расходов
+    for (let i = 0; i < 3; i++) {
+        let questionOptExpenses = +prompt('Статья необязательных расходов?');
+        if ( questionOptExpenses != '' && typeof(questionOptExpenses) == 'number') {
+            console.log('opt ok');
+            appData.optionalExpense[i] = questionOptExpenses;
+        } else {
+            alert('Введите корректные данные!');
+            i--;
+        }
+    }
+}
+// chooseOptExpenses(); // вывод функции необязательных расходов
 
 function checkSavings() { // калькулятор дипозита
     if (appData.savings == true) {
