@@ -1,4 +1,28 @@
-"use strict"
+"use strict";
+
+let startBtn = document.getElementById('start'),
+    budgetValue = document.getElementsByClassName('budget-value')[0],
+	dayBudgetValue = document.getElementsByClassName('daybudget-value')[0],
+    levelValue = document.getElementsByClassName('level-value')[0],
+    expensesValue = document.getElementsByClassName('expenses-value')[0],
+    optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value')[0],
+    incomeValue = document.getElementsByClassName('income-value')[0],
+    monthsavingsValue = document.getElementsByClassName('monthsavings-value')[0],
+    yearsavingsValue = document.getElementsByClassName('yearsavings-value')[0],
+
+    expensesItem = document.getElementsByClassName('expenses-item'),
+    expensesBtn = document.getElementsByTagName('button')[0],
+    optionalExpensesBtn = document.getElementsByTagName('button')[1],
+    countBtn = document.getElementsByTagName('button')[2],    
+    
+    optionalexpensesItem = document.querySelectorAll('.optionalexpenses-item'),
+    additionalIncome = document.querySelector('.choose-income'),
+    checkSavings = document.querySelector('.checksavings'),
+    chooseSum = document.querySelector('.choose-sum'),
+    choosePercent = document.querySelector('.choose-percent'),
+    yearValue = document.querySelector('.year-value'),
+    monthValue = document.querySelector('.month-value'),
+    dayValue = document.querySelector('.day-value');
 
 let money, time;
 
@@ -29,6 +53,7 @@ let appData = {
     optionalExpense: {},
     income: [],
     savings: true,
+
     chooseExpenses: function () { //цикл №1
         for (let i = 0; i < 2; i++) { // проверка на правильность ввода расходов
             let a = prompt("Введите обязательную статью расходов в этом месяце"),
@@ -94,8 +119,6 @@ let appData = {
         for (let i = 0; i <= 0; i++) {
             let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
 
-
-
             if (typeof (items) != "string" || items == "" || typeof (items) == null) {
                 alert('Введите корректные данные!');
                 i--;
@@ -109,16 +132,12 @@ let appData = {
         appData.income.forEach(function (num, i) {
             alert('Способы доп. заработка: ' + (i + 1) + ' - ' + num);
         });
-
     }
 };
 
 for (let key in appData) {
     console.log('Наша программа включает в себя данные: ' + key + ' - ' + appData[key]);
 };
-
-
-
 
     // chooseIncome: function () {
     //     for (i = 0; i <= 1; i++) {
@@ -133,9 +152,6 @@ for (let key in appData) {
     //         }
     //     }
     // }
-
-
-
 
 // Цикл №2
 
