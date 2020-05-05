@@ -24,8 +24,8 @@ let startBtn = document.getElementById('start'),
     monthValue = document.querySelector('.month-value'),
     dayValue = document.querySelector('.day-value');
 
-
 let money, time;
+
 startBtn.addEventListener('click', function () {
     time = prompt('Введите дату в формате YYYY-MM-DD'),
         money = +prompt('Ваш бюджет на месяц?');
@@ -39,9 +39,8 @@ startBtn.addEventListener('click', function () {
     yearValue.value = new Date(Date.parse(time)).getFullYear();
     monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     dayValue.value = new Date(Date.parse(time)).getDate();
-});
-
-expensesBtn.addEventListener('click', function () {
+    
+    expensesBtn.addEventListener('click', function () {
     let sum = 0;
 
     for (let i = 0; i < expensesItem.length; i++) { // проверка на правильность ввода расходов
@@ -74,7 +73,7 @@ optionalExpensesBtn.addEventListener('click', function () {
 });
 
 countBtn.addEventListener('click', function () {
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    appData.moneyPerDay = ((appData.budget - expensesValue.textContent) / 30).toFixed();
     dayBudgetValue.textContent = appData.moneyPerDay;
 
     if (appData.budget != undefined) {
@@ -130,6 +129,7 @@ choosePercent.addEventListener('input', function () {
         monthsavingsValue.textContent = appData.monthIncome.toFixed(1);
         yearsavingsValue.textContent = appData.yearIncome.toFixed(1);
     }
+});
 });
 
 let appData = {
